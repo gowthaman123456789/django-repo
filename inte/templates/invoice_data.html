@@ -83,81 +83,35 @@
     <script>
         function printInvoice() {
             window.print();
-        };
- 
-        // Function to toggle between display and edit mode
-        function toggleEdit() {
-            var spans = document.querySelectorAll('span');
-            var inputs = document.querySelectorAll('input[type="text"]');
-            var cells = document.querySelectorAll('#editableTable td');
- 
-            for (var i = 0; i < spans.length; i++) {
-                spans[i].style.display = 'none';
-                inputs[i].style.display = 'inline';
-                inputs[i].value = spans[i].innerText;
-            }
- 
-            for (var i = 0; i < cells.length; i++) {
-                cells[i].setAttribute('contenteditable', true);
-            }
- 
-            // Show the Save button
-            document.querySelector('.save-button').style.display = 'block';
- 
-            // Show the hidden fields
-            var hiddenFields = document.querySelectorAll('.hidden-field');
-            for (var i = 0; i < hiddenFields.length; i++) {
-                hiddenFields[i].style.display = 'block';
-            }
         }
  
-        // Function to save the edited data
-        function saveData() {
-            var spans = document.querySelectorAll('span');
+        function toggleEdit() {
             var inputs = document.querySelectorAll('input[type="text"]');
+            var spans = document.querySelectorAll('span');
             var cells = document.querySelectorAll('#editableTable td');
+            inputs.forEach((input, index) => {
+                input.style.display = 'inline';
+                input.value = spans[index].innerText;
+            });
+            spans.forEach(span => span.style.display = 'none');
+            cells.forEach(cell => cell.setAttribute('contenteditable', true));
+            document.querySelector('.save-button').style.display = 'block';
+        }
  
-            // Check if any fields have been edited
-            var edited = false;
-            for (var i = 0; i < inputs.length; i++) {
-                if (inputs[i].value !== spans[i].innerText) {
-                    edited = true;
-                    break;
-                }
-            }
+        function saveData() {
+            var inputs = document.querySelectorAll('input[type="text"]');
+            var spans = document.querySelectorAll('span');
+            var cells = document.querySelectorAll('#editableTable td');
+            inputs.forEach((input, index) => {
+                spans[index].innerText = input.value;
+                input.style.display = 'none';
+                spans[index].style.display = 'inline';
+            });
+            cells.forEach(cell => cell.setAttribute('contenteditable', false));
+            document.querySelector('.save-button').style.display = 'none';
  
-            if (edited) {
-                // If any fields have been edited, save the edited data
-                for (var i = 0; i < inputs.length; i++) {
-                    var span = inputs[i].previousElementSibling;
-                    span.innerText = inputs[i].value;
-                    inputs[i].style.display = 'none';
-                    span.style.display = 'inline';
-                }
- 
-                // Set contenteditable to false for all table cells
-                for (var i = 0; i < cells.length; i++) {
-                    cells[i].setAttribute('contenteditable', false);
-                }
-               
-                // Toggle back to non-editable mode for non-table elements
-                var spans = document.querySelectorAll('span');
-                var inputs = document.querySelectorAll('input[type="text"]');
-                for (var i = 0; i < spans.length; i++) {
-                    spans[i].style.display = 'inline';
-                    inputs[i].style.display = 'none';
-                }
- 
-                // Hide the Save button after saving
-                document.querySelector('.save-button').style.display = 'none';
- 
-                // Toggle back to non-editable mode
-                toggleEdit();
-            } else {
-                // If no fields have been edited, simply save the extracted data
-                // Perform the save operation here (e.g., send data to server)
-                alert("Extracted data saved.");
-            }
+            // Send edited data to the server
+            sendEditedData();
         }
  
         // Function to handle pushing JSON data to SAP
