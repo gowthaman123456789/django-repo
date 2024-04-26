@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoice Data</title>
     <link rel="stylesheet" href="static/invoice_data.css">
+    <link rel="stylesheet" href="static/alert.css">
 </head>
 <body>
     <div class="container">
@@ -97,27 +98,47 @@
         }
  
         function saveData() {
-            var inputs = document.querySelectorAll('input[type="text"]');
-            var spans = document.querySelectorAll('span');
-            var cells = document.querySelectorAll('#editableTable td');
-            inputs.forEach((input, index) => {
-                spans[index].innerText = input.value;
-                input.style.display = 'none';
-                spans[index].style.display = 'inline';
-            });
-            cells.forEach(cell => cell.setAttribute('contenteditable', false));
-            document.querySelector('.save-button').style.display = 'none';
- 
-            // Send edited data to the server
-            sendEditedData();
-        }
- 
-        // Function to handle pushing JSON data to SAP
-        function pushToSAP() {
-            // Perform the operation to push JSON to SAP here
-            // For demonstration purposes, let's assume the operation is successful
-            alert("Your JSON file has been successfully pushed into SAP.");
-        }
+    var inputs = document.querySelectorAll('input[type="text"]');
+    var spans = document.querySelectorAll('span');
+    var cells = document.querySelectorAll('#editableTable td');
+    inputs.forEach((input, index) => {
+        spans[index].innerText = input.value;
+        input.style.display = 'none';
+        spans[index].style.display = 'inline';
+    });
+    cells.forEach(cell => cell.setAttribute('contenteditable', false));
+    document.querySelector('.save-button').style.display = 'none';
+
+    // Create the alert message element
+    var alertMessage = document.createElement('div');
+    alertMessage.classList.add('alert');
+    alertMessage.textContent = "Your changes have been saved successfully!";
+    // Append the alert message to the body
+    document.body.appendChild(alertMessage);
+    
+    // Remove the alert message after 3 seconds (3000 milliseconds)
+    setTimeout(function() {
+        alertMessage.remove();
+    }, 3000);
+}
+
+function pushToSAP() {
+    // Perform the operation to push JSON to SAP here
+    // For demonstration purposes, let's assume the operation is successful
+    
+    // Create the alert message element
+    var alertMessage = document.createElement('div');
+    alertMessage.classList.add('alert');
+    alertMessage.textContent = "Your JSON file has been successfully pushed into SAP.";
+    // Append the alert message to the body
+    document.body.appendChild(alertMessage);
+    
+    // Remove the alert message after 3 seconds (3000 milliseconds)
+    setTimeout(function() {
+        alertMessage.remove();
+    }, 3000);
+}
+
     </script>
 </body>
 </html>
