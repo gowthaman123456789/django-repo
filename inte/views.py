@@ -104,4 +104,3 @@ def push_to_sap(request):
         else:
             print("Failed to push JSON data to SAP portal. Status code:", response.status_code)
             print("Error message:", response.text)
-            # You might want to handle the error case here, for example, by rendering an error page
