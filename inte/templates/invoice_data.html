@@ -79,6 +79,17 @@
             $('#editableTable td').attr('contenteditable', false);
             $('.save-button').hide();
         }
+         // Create the alert message element
+    var alertMessage = document.createElement('div');
+    alertMessage.classList.add('alert');
+    alertMessage.textContent = "Your changes have been successfully applied.";
+    // Append the alert message to the body
+    document.body.appendChild(alertMessage);
+ 
+    // Remove the alert message after 3 seconds (3000 milliseconds)
+    setTimeout(function() {
+        alertMessage.remove();
+    }, 3000);
 
         function pushToSAP() {
     
@@ -165,6 +176,17 @@
             }
             return cookieValue;
         }
+                 // Create the alert message element
+    var alertMessage = document.createElement('div');
+    alertMessage.classList.add('alert');
+    alertMessage.textContent = "Your JSON data has been successfully integrated into SAP.";
+    // Append the alert message to the body
+    document.body.appendChild(alertMessage);
+ 
+    // Remove the alert message after 3 seconds (3000 milliseconds)
+    setTimeout(function() {
+        alertMessage.remove();
+    }, 3000);
 
     </script>
 </body>
