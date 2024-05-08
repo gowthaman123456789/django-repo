@@ -79,27 +79,27 @@
             $('span').show();
             $('#editableTable td').attr('contenteditable', false);
             $('.save-button').hide();
+
+            // Create the alert message element for save completion
+            var saveAlertMessage = document.createElement('div');
+            saveAlertMessage.classList.add('alert');
+            saveAlertMessage.textContent = "Your changes have been successfully applied.";
+            // Append the alert message to the body
+            document.body.appendChild(saveAlertMessage);
+
+            // Remove the alert message after 3 seconds (3000 milliseconds)
+            setTimeout(function() {
+                saveAlertMessage.remove();
+            }, 3000);
         }
-         // Create the alert message element
-    var alertMessage = document.createElement('div');
-    alertMessage.classList.add('alert');
-    alertMessage.textContent = "Your changes have been successfully applied.";
-    // Append the alert message to the body
-    document.body.appendChild(alertMessage);
- 
-    // Remove the alert message after 3 seconds (3000 milliseconds)
-    setTimeout(function() {
-        alertMessage.remove();
-    }, 3000);
 
         function pushToSAP() {
-    
             // Initialize the provided data object
             let providedData = {
                 "ID": "1001",
                 "BODY": []
             };
-       
+
             // Extract non-item fields
             let nonItemFields = document.querySelectorAll('.container p');
             let nonItemFieldsData = {};
@@ -108,7 +108,7 @@
                 let value = field.querySelector('span').innerText;
                 nonItemFieldsData[key] = value;
             });
-       
+
             // Extract table data
             let tableRows = document.querySelectorAll('#editableTable tbody tr');
             tableRows.forEach(function(row) {
@@ -120,7 +120,7 @@
                 });
                 providedData["BODY"].push(rowData);
             });
-       
+
             // Mapping data to desired format
             let transformedData = {
                 "ID": providedData["ID"],
@@ -134,15 +134,14 @@
                     };
                 })
             };
-            
-            
+
             // Convert the JSON data to a string
             let jsonData = JSON.stringify(transformedData);
             console.log("transformed Data:");
             console.log(JSON.stringify(transformedData, null, 4));
-       
+
             // Send an AJAX request to Django endpoint
-              $.ajax({
+            $.ajax({
                 type: "POST",
                 url: "/push-to-sap/",
                 beforeSend: function(xhr, settings) {
@@ -151,16 +150,29 @@
                 data: jsonData,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
-                //  success: function(response) {
-                //      console.log("Data pushed to SAP successfully!");
-                //      console.log("Response:", response);
-                //  },
-                //  error: function(xhr, status, error) {
-                   
-                //  }
+                success: function(response) {
+                    // Log the response from the server
+                    console.log("Success! Response:", response);
+
+                    // Create and append the alert message for SAP push completion
+                    var sapAlertMessage = document.createElement('div');
+                    sapAlertMessage.classList.add('alert');
+                    sapAlertMessage.textContent = "Your JSON data has been successfully integrated into SAP.";
+                    // Append the alert message to the body
+                    document.body.appendChild(sapAlertMessage);
+
+                    // Remove the alert message after 3 seconds (3000 milliseconds)
+                    setTimeout(function() {
+                        sapAlertMessage.remove();
+                    }, 3000);
+                },
+                error: function(xhr, status, error) {
+                    // Handle error here if needed
+                    console.error("Error:", error);
+                }
             });
         }
-         
+
         // Function to get CSRF token from cookie
         function getCookie(name) {
             let cookieValue = null;
@@ -177,18 +189,6 @@
             }
             return cookieValue;
         }
-                 // Create the alert message element
-    var alertMessage = document.createElement('div');
-    alertMessage.classList.add('alert');
-    alertMessage.textContent = "Your JSON data has been successfully integrated into SAP.";
-    // Append the alert message to the body
-    document.body.appendChild(alertMessage);
- 
-    // Remove the alert message after 3 seconds (3000 milliseconds)
-    setTimeout(function() {
-        alertMessage.remove();
-    }, 3000);
-
     </script>
 </body>
 </html>
