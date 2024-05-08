@@ -16,8 +16,10 @@ Including another URLconf
 """
 
 from django.urls import path
-from inte.views import upload_invoice
+from inte.views import upload_invoice, push_to_sap
 
 urlpatterns = [
     path('', upload_invoice, name='upload_invoice'),
+    path('push-to-sap/', push_to_sap, name='push_to_sap'),
+  
 ]
