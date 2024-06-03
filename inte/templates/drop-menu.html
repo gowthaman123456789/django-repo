@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> savictech</title>
+    <link rel="stylesheet" href="static/drop-menu.css">
+    <!-- Boxiocns CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  </head>
+<body>
+  <div class="sidebar close">
+    <div class="logo-details">
+      <img src="../static/images/image-removebg-preview.jpg" alt="SAVIC Logo">
+      <span class="logo_name">SAVIC</span>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">Hand Written Invoice</a></li>
+        </ul>
+      </li>
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-collection' ></i>
+            <span class="link_name">Hand Written Invoice</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#"></a></li>
+          <li><a href="#" onclick="loadPage('single-invoice.html')">single Invoice</a></li>
+          <li><a href="#" onclick="loadPage('multi-invoice.html')">multi invoice</a></li>
+          <li><a href="#" onclick="loadPage('folder.html')">folder</a></li>
+          <li><a href="#" onclick="loadPage('dashboard.html')">Dashboard</a></li>
+        </ul>
+      </li>
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-book-alt' ></i>
+            <span class="link_name">Scanned Invoice</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#"></a></li>
+          <li><a href="https://rayagiriocr.azurewebsites.net/" target="_blank">single Invoice</a></li>
+          <li><a href="#" onclick="loadPage('multi-invoice.html')">multi invoice</a></li>
+          <li><a href="#" onclick="loadPage('folder.html')">folder</a></li>
+          <li><a href="https://shankar-treading.azurewebsites.net/" target="_blank">Dashboard</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <section class="home-section">
+    <div class="home-content">
+      <i class='bx bx-menu' ></i>
+      <span class="text">Drop Down Sidebar</span>
+    </div>
+    <div class="page-content">
+      <!-- Content will be loaded here -->
+    </div>
+  </section>
+  <script>
+    let arrow = document.querySelectorAll(".arrow");
+    for (var i = 0; i < arrow.length; i++) {
+      arrow[i].addEventListener("click", (e)=>{
+        let arrowParent = e.target.parentElement.parentElement; // selecting main parent of arrow
+        arrowParent.classList.toggle("showMenu");
+      });
+    }
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".bx-menu");
+    console.log(sidebarBtn);
+    sidebarBtn.addEventListener("click", ()=>{
+      sidebar.classList.toggle("close");
+    });
+
+    function loadPage(pageUrl) {
+      let xhr = new XMLHttpRequest();
+      xhr.open('GET', pageUrl, true);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          document.querySelector('.page-content').innerHTML = xhr.responseText;
+        }
+      };
+      xhr.send();
+    }
+  </script>
+</body>
+</html>

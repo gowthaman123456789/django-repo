@@ -20,7 +20,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'inte',
+    'rest_framework',
+    'corsheaders',
+    'inte.apps.InteConfig',
+     
+    'rest_framework.authtoken'
 ]
 
 MIDDLEWARE = [
@@ -31,7 +35,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # Inserted Whitenoise middleware
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',# Inserted Whitenoise middleware
 ]
 
 
@@ -57,11 +62,20 @@ WSGI_APPLICATION = 'ocr.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
+CA_CERT_PATH = BASE_DIR / 'security' / 'DigiCertGlobalRootCA.crt.pem'
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ocr',
+        'USER': 'ocr',
+        'PASSWORD': 'Savic@(123)',
+        'HOST': 'savicocrdb.mysql.database.azure.com',  # Or your MySQL server hostname
+        'PORT': '3306',  # Or your MySQL server port
+        'OPTIONS': {
+             'ssl': {
+                'ca': str(CA_CERT_PATH),
+            }
+        }
     }
 }
 
@@ -111,3 +125,35 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_ALL_HEADERS=True
+
+
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+}
+
+
+AUTH_USER_MODEL = 'inte.User'
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+    # Add your domain here
+]
+
+
+# settings.py
+
+
+
+
