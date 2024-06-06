@@ -1,132 +1,341 @@
+
 /* Google Fonts Import Link */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-*{
+ 
+/* Global Styles */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-.sidebar{
+ 
+body{
+  background-color: white;
+}
+/* Container Styles */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+}
+ 
+/* Upload Form Styles */
+.upload-form {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border: 2px solid white;
+  border-radius: 20px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+ 
+/* Logo Styles */
+.logo {
+  width: 150px;
+}
+ 
+/* Title Styles */
+.title {
+  margin-top: 20px;
+  color: black;
+  font-size: 35px;
+}
+ 
+/* Form Group Styles */
+.form-group {
+  margin-top: 30px;
+}
+ 
+/* File Label Styles */
+.file-label {
+  font-weight: bold;
+  color: black;
+}
+ 
+/* File Input Styles */
+.file-input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-sizing: border-box;
+  color: black;
+  transition: border-color 0.3s;
+}
+ 
+/* Clear Button Styles */
+.clear-btn {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+ 
+/* Clear Button Hover Styles */
+.clear-btn:hover {
+  background-color: #5a0810;
+}
+ 
+/* Upload Button Styles */
+.upload-btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background-color: #003cff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+ 
+/* Upload Button Hover Styles */
+.upload-btn:hover {
+  background-color: #05203b;
+  transition: all .2s ease-in-out;
+}
+ 
+/* Instruction Link Styles */
+.instruction-link {
+  display: block;
+  margin-top: 20px;
+  color: #007bff;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s;
+  border: none;
+  background-color: white;
+}
+ 
+/* Instruction Link Hover Styles */
+.instruction-link:hover {
+  color: #0056b3;
+}
+ 
+/* Footer Styles */
+#footer {
+  width: 100%;
+  height: 20px;
+  font-size: 14px;
+  color: #727272;
   position: fixed;
-  top: 0;
+  bottom: 0;
   left: 0;
-  height: 100%;
+  right: 0;
+  margin: 20px auto;
+  text-align: center;
+}
+ 
+/* Footer Link Styles */
+#footer a {
+  text-decoration: none;
+  color: #727272;
+  font-size: 14px;
+}
+ 
+/* Sidebar Styles */
+.rightside_box {
+  width: 390px;
+  height: auto;
+  float: right;
+  box-sizing: border-box;
+  padding: 40px;
+  background-color: #fff;
+  display: table-cell;
+  overflow: hidden;
+}
+ 
+.sidebar {
+  position: fixed;
+  top: 60px;
+  left: 5px;
+  height: 70%;
   width: 278px;
-  background: #11101d;
+  background: var(--cib-color-background-surface-solid-tertiary);
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 2px 3px 0px;
   z-index: 100;
   transition: all 0.5s ease;
+  border-radius: 20px;
+ 
 }
-.sidebar.close{
-  width: 78px;
+ 
+/* Active Sidebar Item Styles */
+.sidebar .nav-links li.active > a,
+.sidebar .nav-links li.active > .iocn-link > a {
+  background-color: #e0e0e0; /* Change this color to whatever you prefer */
+  color: #003cff; /* Change this color to whatever you prefer */
 }
-.sidebar .logo-details{
+ 
+/* Active Sidebar Item Icon Styles */
+.sidebar .nav-links li.active i {
+  color: #003cff; /* Change this color to whatever you prefer */
+}
+ 
+ 
+/* Sidebar Closed Styles */
+.sidebar.close {
+  display: none;
+}
+ 
+/* Logo Details Styles */
+.sidebar .logo-details {
   height: 60px;
   width: 100%;
   display: flex;
   align-items: center;
 }
-.sidebar .logo-details img{
+ 
+/* Home Content Styles */
+.home-content img {
   font-size: 30px;
-  color: #fff;
+  color: black;
   height: 50px;
   min-width: 55px;
   text-align: center;
   line-height: 50px;
-  margin-left: 6%;
+  margin-left: 0%;
 }
-.sidebar .logo-details .logo_name{
+ 
+/* Logo Name Styles */
+.logo-details .logo_name {
   font-size: 32px;
-  color: #fff;
+  color: black;
   font-weight: 600;
   transition: 0.3s ease;
   transition-delay: 0.1s;
   margin-left: 2%;
 }
-.sidebar.close .logo-details .logo_name{
+ 
+/* Sidebar Close Logo Name Styles */
+.sidebar.close .logo-details .logo_name {
   transition-delay: 0s;
   opacity: 0;
   pointer-events: none;
 }
-.sidebar .nav-links{
+ 
+/* Navigation Links Styles */
+.sidebar .nav-links {
   height: 100%;
   padding: 30px 0 150px 0;
   overflow: auto;
 }
-.sidebar.close .nav-links{
+ 
+/* Sidebar Close Navigation Links Styles */
+.sidebar.close .nav-links {
   overflow: visible;
 }
-.sidebar .nav-links::-webkit-scrollbar{
+ 
+/* Sidebar Navigation Links Styles */
+.sidebar .nav-links::-webkit-scrollbar {
   display: none;
 }
-.sidebar .nav-links li{
+ 
+/* Sidebar Navigation Links List Styles */
+.sidebar .nav-links li {
   position: relative;
   list-style: none;
   transition: all 0.4s ease;
 }
-.sidebar .nav-links li:hover{
-  background: #1d1b31;
-}
-.sidebar .nav-links li .iocn-link{
+ 
+/* Sidebar Navigation Links Icon Link Styles */
+.sidebar .nav-links li .iocn-link {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.sidebar.close .nav-links li .iocn-link{
+ 
+/* Sidebar Close Navigation Links Icon Link Styles */
+.sidebar.close .nav-links li .iocn-link {
   display: block;
 }
-.sidebar .nav-links li i{
+ 
+/* Sidebar Navigation Links Icon Styles */
+.sidebar .nav-links li i {
   height: 50px;
   min-width: 78px;
   text-align: center;
   line-height: 50px;
-  color: #fff;
+  color: black;
   font-size: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
-.sidebar .nav-links li.showMenu i.arrow{
+ 
+/* Sidebar Show Menu Icon Arrow Styles */
+.sidebar .nav-links li.showMenu i.arrow {
   transform: rotate(-180deg);
 }
-.sidebar.close .nav-links i.arrow{
+ 
+/* Sidebar Close Show Menu Icon Arrow Styles */
+.sidebar.close .nav-links i.arrow {
   display: none;
 }
-.sidebar .nav-links li a{
+ 
+/* Sidebar Navigation Links Anchor Styles */
+.sidebar .nav-links li a {
   display: flex;
   align-items: center;
   text-decoration: none;
 }
-.sidebar .nav-links li a .link_name{
+ 
+/* Sidebar Navigation Links Name Styles */
+.sidebar .nav-links li a .link_name {
   font-size: 18px;
   font-weight: 400;
-  color: #fff;
+  color: black;
   transition: all 0.4s ease;
 }
-.sidebar.close .nav-links li a .link_name{
+ 
+/* Sidebar Close Navigation Links Name Styles */
+.sidebar.close .nav-links li a .link_name {
   opacity: 0;
   pointer-events: none;
 }
-.sidebar .nav-links li .sub-menu{
+ 
+/* Sidebar Sub Menu Styles */
+.sidebar .nav-links li .sub-menu {
   padding: 6px 6px 14px 80px;
   margin-top: -10px;
-  background: #1d1b31;
+  background: white;
   display: none;
   text-align: center;
 }
-.sidebar .nav-links li.showMenu .sub-menu{
+ 
+/* Sidebar Show Menu Sub Menu Styles */
+.sidebar .nav-links li.showMenu .sub-menu {
   display: block;
 }
-.sidebar .nav-links li .sub-menu a{
-  color: #fff;
+ 
+/* Sidebar Sub Menu Anchor Styles */
+.sidebar .nav-links li .sub-menu a {
+  color: black;
   font-size: 15px;
   padding: 5px 0;
   white-space: nowrap;
   opacity: 0.6;
   transition: all 0.3s ease;
 }
-.sidebar .nav-links li .sub-menu a:hover{
+ 
+/* Sidebar Sub Menu Anchor Hover Styles */
+.sidebar .nav-links li .sub-menu a:hover {
   opacity: 1;
 }
-.sidebar.close .nav-links li .sub-menu{
+ 
+/* Sidebar Close Sub Menu Styles */
+.sidebar.close .nav-links li .sub-menu {
   position: absolute;
   left: 100%;
   top: -10px;
@@ -138,107 +347,207 @@
   pointer-events: none;
   transition: 0s;
 }
-.sidebar.close .nav-links li:hover .sub-menu{
+ 
+/* Sidebar Close Sub Menu Hover Styles */
+.sidebar.close .nav-links li:hover .sub-menu {
   top: 0;
   opacity: 1;
   pointer-events: auto;
   transition: all 0.4s ease;
 }
-.sidebar .profile-details{
+ 
+/* Profile Details Styles */
+.sidebar .profile-details {
   position: fixed;
   bottom: 0;
   width: 260px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #1d1b31;
+  background: white;
   padding: 12px 0;
   transition: all 0.5s ease;
 }
-.sidebar.close .profile-details{
+ 
+/* Sidebar Close Profile Details Styles */
+.sidebar.close .profile-details {
   background: none;
 }
-.sidebar.close .profile-details{
+ 
+/* Sidebar Close Profile Details Width Styles */
+.sidebar.close .profile-details {
   width: 78px;
 }
-.sidebar .profile-details .profile-content{
+ 
+/* Profile Content Styles */
+.sidebar .profile-details .profile-content {
   display: flex;
   align-items: center;
 }
-.sidebar .profile-details img{
+ 
+/* Profile Image Styles */
+.sidebar .profile-details img {
   height: 52px;
   width: 52px;
   object-fit: cover;
   border-radius: 16px;
   margin: 0 14px 0 12px;
-  background: #1d1b31;
+  background: white;
   transition: all 0.5s ease;
 }
-.sidebar.close .profile-details img{
+ 
+/* Sidebar Close Profile Image Styles */
+.sidebar.close .profile-details img {
   padding: 10px;
 }
+ 
+/* Profile Name and Job Styles */
 .sidebar .profile-details .profile_name,
-.sidebar .profile-details .job{
+.sidebar .profile-details .job {
   color: #fff;
   font-size: 18px;
   font-weight: 500;
   white-space: nowrap;
 }
+ 
+/* Sidebar Close Profile Details Styles */
 .sidebar.close .profile-details i,
 .sidebar.close .profile-details .profile_name,
-.sidebar.close .profile-details .job{
+.sidebar.close .profile-details .job {
   display: none;
 }
-.sidebar .profile-details .job{
+ 
+/* Profile Job Styles */
+.sidebar .profile-details .job {
   font-size: 12px;
 }
-.home-section{
+ 
+/* Home Section Styles */
+.home-section {
   position: relative;
-  background: #E4E9F7;
+  background: white;
   height: 100vh;
-  left: 260px;
-  width: calc(100% - 260px);
+  width: 100%;
   transition: all 0.5s ease;
 }
-.sidebar.close ~ .home-section{
-  left: 78px;
-  width: calc(100% - 78px);
-}
-.home-section .home-content{
+ 
+/* Home Content Styles */
+.home-section .home-content {
   height: 60px;
   display: flex;
   align-items: center;
 }
+ 
+/* Home Content Styles */
 .home-section .home-content .bx-menu,
-.home-section .home-content .text{
+.home-section .home-content {
   color: #11101d;
   font-size: 35px;
 }
-.home-section .home-content .bx-menu{
+ 
+/* Home Content Menu Icon Styles */
+.home-section .home-content .bx-menu {
   margin: 0 15px;
   cursor: pointer;
 }
-.home-section .home-content .text{
+ 
+/* Home Content Text Styles */
+.home-section .home-content .text {
   font-size: 26px;
   font-weight: 600;
 }
-@media (max-width: 400px) {
-  .sidebar.close .nav-links li .sub-menu{
-    display: none;
+ 
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .upload-form {
+    width: 90%;
+    padding: 20px;
   }
-  .sidebar{
-    width: 78px;
-  }
-  .sidebar.close{
-    width: 0;
-  }
-  .home-section{
-    left: 78px;
-    width: calc(100% - 78px);
-    z-index: 100;
-  }
-  .sidebar.close ~ .home-section{
-    width: 100%;
-    left: 0;
+  .title {
+    font-size: 30px;
   }
 }
+ 
+@media (max-width: 768px) {
+  .upload-form {
+    padding: 15px;
+  }
+  .title {
+    font-size: 25px;
+  }
+  .file-input, .upload-btn {
+    font-size: 16px;
+    padding: 10px;
+  }
+  .clear-btn {
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+  .instruction-link {
+    font-size: 14px;
+  }
+  #footer {
+    font-size: 12px;
+  }
+  .sidebar {
+    width: 200px;
+  }
+  .sidebar.close {
+    display: none;
+  }
+  .sidebar .nav-links li i {
+    min-width: 60px;
+  }
+  .sidebar .profile-details {
+    width: 200px;
+  }
+}
+ 
+@media (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    padding: 10px;
+  }
+  .upload-form {
+    width: 100%;
+    padding: 10px;
+  }
+  .title {
+    font-size: 20px;
+  }
+  .file-input, .upload-btn {
+    font-size: 14px;
+    padding: 8px;
+  }
+  .clear-btn {
+    padding: 4px 8px;
+    font-size: 12px;
+    margin-left: 5px;
+  }
+  .instruction-link {
+    font-size: 12px;
+  }
+  #footer {
+    font-size: 10px;
+  }
+  .sidebar {
+    width: 150px;
+  }
+  .sidebar.close {
+    display: none;
+  }
+  .sidebar .nav-links li i {
+    min-width: 50px;
+  }
+  .sidebar .profile-details {
+    width: 150px;
+  }
+  .sidebar .profile-details img {
+    height: 40px;
+    width: 40px;
+  }
+  .home-section .home-content .text {
+    font-size: 20px;
+  }
+}
+ 
